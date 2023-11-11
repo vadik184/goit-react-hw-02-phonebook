@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-
+import { nanoid } from 'nanoid';
+const initState = {
+  name: '',
+  number: '',
+};
 export class Form extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+  state = { ...initState };
 
   handelSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit({ ...this.state });
     this.resetForm();
   };
   resetForm = () => {
-    this.setState({ name: '', number: '' });
+    this.setState({ ...initState });
   };
   handelChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
-
+  nameInputId = nanoid();
+  numberInputId = nanoid();
   render() {
     return (
       <form onSubmit={this.handelSubmit}>
         <label
+          htmlFor={this.nameInputId}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -33,6 +36,7 @@ export class Form extends Component {
           <input
             type="text"
             name="name"
+            id={this.nameInputId}
             value={this.state.name}
             placeholder="Enter name"
             onChange={this.handelChange}
@@ -40,6 +44,7 @@ export class Form extends Component {
           />
         </label>
         <label
+          htmlFor={this.numberInputId}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -50,6 +55,7 @@ export class Form extends Component {
           <input
             type="tel"
             name="number"
+            id={this.numberInputId}
             value={this.state.number}
             placeholder="Enter number"
             onChange={this.handelChange}
