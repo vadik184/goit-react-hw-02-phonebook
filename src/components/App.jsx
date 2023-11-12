@@ -19,8 +19,20 @@ export class App extends Component {
     name: '',
     number: '',
   };
-
+  deleteContact = contactID => {
+    this.setState(prev => ({
+      contacts: prev.contacts.filter(contact => contact.id !== contactID),
+    }));
+  };
   formSubmitHandler = data => {
+    if (
+      this.state.contacts.some(
+        contact =>
+          contact.name.toLocaleLowerCase() === data.name.toLocaleLowerCase()
+      )
+    ) {
+      return alert(`${data.name} is already in contacts`);
+    }
     return this.setState(prev => ({
       ...prev,
       contacts: [
@@ -33,16 +45,28 @@ export class App extends Component {
       ],
     }));
   };
+
+  chageFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
   InputId = nanoid();
   render() {
+    const selectedByFilter = this.state.contacts.filter(contact =>
+      contact.name
+        .toLocaleLowerCase()
+        .includes(this.state.filter.toLocaleLowerCase())
+    );
     return (
       <div>
         <Section title="Phonebook">
           <Form onSubmit={this.formSubmitHandler} />
         </Section>
         <Section title="Contacts">
-          <Filter />
-          <Contacts contacts={this.state.contacts} />
+          <Filter filter={this.state.filter} onChageFilter={this.chageFilter} />
+          <Contacts
+            contacts={selectedByFilter}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </div>
     );
