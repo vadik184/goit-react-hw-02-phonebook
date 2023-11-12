@@ -58,7 +58,7 @@ export class Form extends Component {
             name="number"
             id={this.numberInputId}
             value={this.state.number}
-            placeholder="Enter number"
+            placeholder="Enter a 7-digit number "
             onChange={this.handelChange}
           />
         </label>
