@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import {
+  StyledButten,
+  StyledFormIput,
+  StyledFormLabel,
+  StyledForm,
+} from 'components/Form/FormStyle';
 const initState = {
   name: '',
   number: '',
@@ -24,8 +30,8 @@ export class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handelSubmit}>
-        <label
+      <StyledForm onSubmit={this.handelSubmit}>
+        <StyledFormLabel
           htmlFor={this.nameInputId}
           style={{
             display: 'flex',
@@ -34,7 +40,7 @@ export class Form extends Component {
           }}
         >
           Name
-          <input
+          <StyledFormIput
             type="text"
             name="name"
             id={this.nameInputId}
@@ -43,8 +49,8 @@ export class Form extends Component {
             onChange={this.handelChange}
             required
           />
-        </label>
-        <label
+        </StyledFormLabel>
+        <StyledFormLabel
           htmlFor={this.numberInputId}
           style={{
             display: 'flex',
@@ -53,17 +59,17 @@ export class Form extends Component {
           }}
         >
           Number
-          <input
+          <StyledFormIput
             type="tel"
             name="number"
             id={this.numberInputId}
             value={this.state.number}
-            placeholder="Enter a 7-digit number "
+            placeholder="Enter number "
             onChange={this.handelChange}
           />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        </StyledFormLabel>
+        <StyledButten type="submit">Add contact</StyledButten>
+      </StyledForm>
     );
   }
 }

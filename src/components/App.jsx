@@ -6,6 +6,8 @@ import { Contacts } from 'components/Contacts/Contacts';
 import { Form } from 'components/Form/Form';
 import { Filter } from 'components/Filter/Filter';
 
+import { StyledContainer } from 'components/AppStyle';
+
 import { formatPhoneNumber } from 'components/Form/Number';
 export class App extends Component {
   state = {
@@ -57,7 +59,7 @@ export class App extends Component {
         .includes(this.state.filter.toLocaleLowerCase())
     );
     return (
-      <div>
+      <StyledContainer>
         <Section title="Phonebook">
           <Form onSubmit={this.formSubmitHandler} />
         </Section>
@@ -68,7 +70,7 @@ export class App extends Component {
             onDeleteContact={this.deleteContact}
           />
         </Section>
-      </div>
+      </StyledContainer>
     );
   }
 }
