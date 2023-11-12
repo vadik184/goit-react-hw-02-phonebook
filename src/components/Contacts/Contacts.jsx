@@ -5,7 +5,10 @@ export const Contacts = prors => {
       {prors.contacts.map(({ id, name, number }) => {
         return (
           <li key={id}>
-            {name}: {number}
+            <p>
+              {name}: {number}
+            </p>
+            <button>Delete</button>
           </li>
         );
       })}
