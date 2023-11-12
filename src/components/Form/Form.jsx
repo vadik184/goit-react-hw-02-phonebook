@@ -21,6 +21,7 @@ export class Form extends Component {
   };
   nameInputId = nanoid();
   numberInputId = nanoid();
+
   render() {
     return (
       <form onSubmit={this.handelSubmit}>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
 import { Contacts } from 'components/Contacts/Contacts';
 import { Form } from 'components/Form/Form';
+
+import { formatPhoneNumber } from 'components/Form/Number';
 export class App extends Component {
   state = {
     contacts: [
@@ -18,9 +20,19 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
+    return this.setState(prev => ({
+      ...prev,
+      contacts: [
+        ...prev.contacts,
+        {
+          id: nanoid(),
+          name: data.name,
+          number: formatPhoneNumber(data.number),
+        },
+      ],
+    }));
   };
-  // InputId = nanoid();
+  InputId = nanoid();
   render() {
     return (
       <div>
