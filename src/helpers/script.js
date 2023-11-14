@@ -1,4 +1,4 @@
-// формат цифр з тире
+// формат номера з тире
 export const formatPhoneNumber = number => {
   const cleaned = number.replace(/\D/g, '');
 
