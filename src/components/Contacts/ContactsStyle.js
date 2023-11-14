@@ -5,7 +5,10 @@ export const StyledList = styled('ul')`
   flex-direction: column;
   justify-content: center;
   flex-direction: column;
-  width: 450px;
+  width: 300px;
+  @media (min-width: 478px) {
+    width: 450px;
+  }
   padding: 0 0 20px 0;
   border-top: 1px solid #d3d9de;
 `;
@@ -25,10 +28,13 @@ export const StyledListItemText = styled('p')`
   display: block;
   padding-left: 5px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.11;
   letter-spacing: 0.02em;
   color: #122236;
+  @media (min-width: 478px) {
+    font-size: 18px;
+  }
 `;
 export const StyledDeletButton = styled('button')`
   background-color: #e1ecf4;
