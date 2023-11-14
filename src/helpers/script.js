@@ -1,3 +1,4 @@
+// формат цифр з тире
 export const formatPhoneNumber = number => {
   const cleaned = number.replace(/\D/g, '');
 
@@ -8,4 +9,8 @@ export const formatPhoneNumber = number => {
   }
 
   return number;
+};
+// контакти з великої літери
+export const formatName = str => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };

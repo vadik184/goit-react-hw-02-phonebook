@@ -8,7 +8,7 @@ import { Filter } from 'components/Filter/Filter';
 
 import { StyledContainer } from 'components/AppStyle';
 
-import { formatPhoneNumber } from 'components/Form/Number';
+import { formatPhoneNumber, formatName } from '../helpers/script';
 export class App extends Component {
   state = {
     contacts: [
@@ -18,8 +18,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
   deleteContact = contactID => {
     this.setState(prev => ({
@@ -27,13 +25,15 @@ export class App extends Component {
     }));
   };
   formSubmitHandler = data => {
+    const dataName = data.name;
+
     if (
       this.state.contacts.some(
         contact =>
-          contact.name.toLocaleLowerCase() === data.name.toLocaleLowerCase()
+          contact.name.toLocaleLowerCase() === dataName.toLocaleLowerCase()
       )
     ) {
-      return alert(`${data.name} is already in contacts`);
+      return alert(`${dataName} is already in contacts`);
     }
     return this.setState(prev => ({
       ...prev,
@@ -41,7 +41,7 @@ export class App extends Component {
         ...prev.contacts,
         {
           id: nanoid(),
-          name: data.name,
+          name: dataName.split(' ').map(formatName).join(' '),
           number: formatPhoneNumber(data.number),
         },
       ],

@@ -11,7 +11,6 @@ export const StyledList = styled('ul')`
 `;
 export const StyledListItem = styled('li')`
   display: flex;
-  /* padding: 15px 20px 0 20px; */
   margin-top: 15px;
   align-items: center;
   justify-content: space-between;

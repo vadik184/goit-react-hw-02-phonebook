@@ -47,6 +47,7 @@ export class Form extends Component {
             value={this.state.name}
             placeholder="Enter name"
             onChange={this.handelChange}
+            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             required
           />
         </StyledFormLabel>
@@ -64,8 +65,9 @@ export class Form extends Component {
             name="number"
             id={this.numberInputId}
             value={this.state.number}
-            placeholder="Enter number "
+            placeholder="Enter 7-digit number"
             onChange={this.handelChange}
+            pattern="[0-9]{7}"
           />
         </StyledFormLabel>
         <StyledButten type="submit">Add contact</StyledButten>
